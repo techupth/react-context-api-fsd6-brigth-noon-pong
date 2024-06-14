@@ -3,6 +3,8 @@ import "./App.css";
 
 import HomePage from "./pages/HomePage.jsx";
 import ViewProductPage from "./pages/ViewProductPage.jsx";
+import React from "react";
+export  const ProfileContext = React.createContext();
 
 function App() {
   const userData = {
@@ -12,15 +14,21 @@ function App() {
   };
 
   return (
-    <div className="App">
+    
+      <div className="App">
+        <ProfileContext.Provider value={{ userData }}>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/view/:id" element={<ViewProductPage />} />
         </Routes>
       </Router>
+      </ProfileContext.Provider>
     </div>
+   
+    
   );
 }
 
 export default App;
+
